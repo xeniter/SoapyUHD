@@ -863,7 +863,7 @@ uhd::tx_streamer::sptr UHDSoapyDevice::get_tx_stream(const uhd::stream_args_t &a
 
 bool UHDSoapyDevice::recv_async_msg(uhd::async_metadata_t &md, double timeout)
 {
-    uhd::tx_streamer::sptr stream = _tx_streamers[0].lock();
+    auto stream = _tx_streamers[0].lock();
     if (not stream) return false;
     return stream->recv_async_msg(md, timeout);
 }
